@@ -14,12 +14,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+import os
+
 import webapp2
+from webapp2_extras import routes
+
+from ufeny.public import public_handlers
+
+
+DEBUG = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
+
+webapp2_config = {}
+webapp2_config['webapp2_extras.sessions'] = {
+    'secret_key': 'EnterAsEcretKey',
+}
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        self.response.write('Hello world this is test two!')
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+     webapp2.Route(r'/', handler=public_handlers.HomeHandler, name='home')                          
+       
 ], debug=True)
+
+#('/', MainHandler)

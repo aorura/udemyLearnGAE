@@ -20,7 +20,7 @@ import os
 import webapp2
 from webapp2_extras import routes
 
-from ufeny.public import public_handlers
+from ufundy.public import public_handler
 
 
 DEBUG = os.environ.get('SERVER_SOFTWARE', '').startswith('Dev')
@@ -35,8 +35,9 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write('Hello world this is test two!')
 
 app = webapp2.WSGIApplication([
-     webapp2.Route(r'/', handler=public_handlers.HomeHandler, name='home')                          
+     webapp2.Route(r'/', handler=public_handler.HomeHandler, name='home')                          
        
-], debug=True)
+], 
+                config=webapp2_config, debug=True)
 
 #('/', MainHandler)

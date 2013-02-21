@@ -59,7 +59,7 @@ class BaseHandler(webapp2.RequestHandler):
                     'page_description': page_description, \
                     'message': message}
 
-        self.render_response('public/error.html', **context)
+        #self.render_response('public/error.html', **context)
 
 
     @webapp2.cached_property
